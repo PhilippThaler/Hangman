@@ -58,7 +58,7 @@ public class Hangman {
                 System.out.println("You already used this letter!");
                 System.out.print("Word: ");
                 System.out.println(guess);
-                input = scanner.next().toUpperCase().charAt(0);
+                input = scanner.nextLine().toUpperCase().charAt(0);
             }
             usedChars.add(input);
 
@@ -69,12 +69,14 @@ public class Hangman {
                     isRight = true;
                 }
             }
+
+            // Prints the hanged man
+            System.out.println(Drawing.stages[wrongGuesses]);
+
             if (!isRight) {
                 System.out.println("Wrong guess!");
                 wrongGuesses++;
             }
-            // Prints the hanged man
-            System.out.println(Drawing.stages[wrongGuesses]);
         }
         System.out.println((word.equals(new String(guess))) ? word + "\nYou won!" : "You lost, the word was: " + word);
     }
