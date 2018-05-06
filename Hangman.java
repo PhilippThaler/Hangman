@@ -51,14 +51,14 @@ public class Hangman {
             System.out.print("Word: ");
             System.out.println(guess);
 
-            input = scanner.nextLine().toUpperCase().charAt(0);
+            input = input();
 
             // Checks for already used letters
             while (usedChars.contains(input)) {
                 System.out.println("You already used this letter!");
                 System.out.print("Word: ");
                 System.out.println(guess);
-                input = scanner.nextLine().toUpperCase().charAt(0);
+                input = input();
             }
             usedChars.add(input);
 
@@ -79,5 +79,18 @@ public class Hangman {
             }
         }
         System.out.println((word.equals(new String(guess))) ? word + "\nYou won!" : "You lost, the word was: " + word);
+    }
+
+    // Method for handling input
+    public static char input() {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = "";
+
+        while (input.equals("")) {
+            input = scanner.nextLine().toUpperCase();
+        }
+
+        return input.charAt(0);
     }
 }
